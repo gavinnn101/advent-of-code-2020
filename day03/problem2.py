@@ -1,7 +1,5 @@
-graph = []
 with open('input.txt') as input_file:
-    for line in input_file:
-        graph.append(line.strip())
+    graph = [list(line.strip()) for line in input_file]
 
 
 def traverse(graph: list, move_right: int, move_down: int) -> int:
@@ -27,10 +25,12 @@ def traverse(graph: list, move_right: int, move_down: int) -> int:
 
 # Test inputs
 # Trying to store all of this in memory causes a MemoryError but I'm moving on..
-a = (traverse(graph, move_right=1, move_down=1))
+# a = (traverse(graph, move_right=1, move_down=1))
 b = (traverse(graph, move_right=3, move_down=1))
-c = (traverse(graph, move_right=5, move_down=1))
-d = (traverse(graph, move_right=7, move_down=1))
-e = (traverse(graph, move_right=1, move_down=2))
+# c = (traverse(graph, move_right=5, move_down=1))
+# d = (traverse(graph, move_right=7, move_down=1))
+# e = (traverse(graph, move_right=1, move_down=2))
 
-print(a * b * c * d * e)
+# print(a * b * c * d * e)
+
+print(b)

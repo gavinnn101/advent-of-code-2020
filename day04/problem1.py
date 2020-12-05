@@ -17,12 +17,13 @@ with open('input.txt') as input_file:
             # print(passport)
         else:  # We hit a blank line. Check if current passport is valid before moving on
             print(f"Checking passport:\n {passport}")
-            for k, v in passport.items():
-                if v == 0:
-                    print("Hit invalid")
-                    continue
+            if 0 in passport.values():
+                print("Hit invalid")
+            else:
+                print(f"Passport + 1")
+                valid_passports += 1
             for k, v in passport.items():
                 passport[k] = 0  # Reset our passport for the next entry
-            valid_passports += 1
+
 
 print(valid_passports)
