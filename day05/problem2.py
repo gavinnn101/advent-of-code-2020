@@ -3,7 +3,7 @@ import statistics
 
 def find_row(rows_to_eliminate: str) -> int:
     """Returns the row of the passenger's seat"""
-    rows = {'front_half': 0, 'back_half': 127}
+    rows = {'front_half': 0, 'back_half': 128}
 
     for section in rows_to_eliminate:
         # print(f"Remaining Rows: {rows}")
@@ -20,7 +20,7 @@ def find_row(rows_to_eliminate: str) -> int:
 
 def find_column(column_values: str) -> int:
     """Finds the column of the passenger's seat"""
-    columns = {'front_half': 0, 'back_half': 7}
+    columns = {'front_half': 0, 'back_half': 8}
 
     for section in column_values:
         # print(f"Remaining Columns: {columns}")
@@ -57,10 +57,11 @@ with open('input.txt') as input_file:
         seat_ids.append(seat_info['seat ID'])
 
 
-def find_my_seat(seat_ids_list: list) -> int:
-    seat_ids_list = sorted(set(seat_ids_list))
-    print(seat_ids_list)
-
+def find_my_seat(seat_ids: list) -> int:
+    seat_ids = sorted(seat_ids)
+    for seat in range(1, len(seat_ids)-1):
+        if seat_ids[seat-1] != seat_ids[seat] - 1 or seat_ids[seat+1] != seat_ids[seat] + 1:
+            return seat_ids[seat]
 
 
 print(find_my_seat(seat_ids))
